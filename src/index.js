@@ -2,15 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+//class component example; The Square component that renders a single <button>
 class Square extends React.Component {
   render() {
-    return <button className="square">{/* TODO */}</button>;
+    return <button className="square">{this.props.value}</button>;
   }
 }
 
+//second class component; the Board component that renders 9 squares
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square value={i} />;
   }
 
   render() {
@@ -39,6 +41,7 @@ class Board extends React.Component {
   }
 }
 
+//The Game component renders a board with placeholder values which we’ll modify later.
 class Game extends React.Component {
   render() {
     return (
