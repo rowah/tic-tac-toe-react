@@ -4,12 +4,12 @@ Just a simple game for two players who take turns marking the spaces in a three-
 
 [Here](https://product-expiry-tracker.cyclic.app/) is the link to the game.
 
-![Tic-Tac-Toe](https://github.com/rowah/tic-tac-toe-react/public/imgs/tic-tac-toe.png)
+![Tic-Tac-Toe](https://github.com/rowah/tic-tac-toe-react/blob/main/public/tic-tac-toe.png)
 
 ## How it is built:
 
 **Tech used:** \
-ReactJS, CSS,\
+ReactJS, CSS,
 
 ## Run
 
