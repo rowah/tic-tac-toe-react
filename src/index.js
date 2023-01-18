@@ -4,27 +4,11 @@ import "./index.css";
 
 //class component example; The Square component that renders a single <button>
 class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
-  }
   render() {
-    return (
-      <button
-        className="square"
-        onClick={() => {
-          this.setState({ value: "X" });
-        }}
-      >
-        {this.state.value}
-      </button>
-    );
+    return <button className="square">{this.props.value}</button>;
   }
 }
 
-//second class component; the Board component that renders 9 squares
 class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
@@ -56,7 +40,6 @@ class Board extends React.Component {
   }
 }
 
-//The Game component renders a board with placeholder values which we’ll modify later.
 class Game extends React.Component {
   render() {
     return (

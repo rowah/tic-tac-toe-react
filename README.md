@@ -2,7 +2,7 @@
 
 Just a simple game for two players who take turns marking the spaces in a three-by-three grid with X or O. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
 
-[Here](https://product-expiry-tracker.cyclic.app/) is the link to the game.
+[Here]() is the link to the game.
 
 ![Tic-Tac-Toe](https://github.com/rowah/tic-tac-toe-react/blob/main/public/tic-tac-toe.png)
 
