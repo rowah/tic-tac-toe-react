@@ -9,16 +9,26 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() {
+  // sets the first move to be X by default
+  const [xIsNext, setXIsNext] = useState(true);
   // squares variable is initialized with an array of 9 null values using the Array() constructor and the fill() method
   // The useState hook returns an array with two elements: the current state value and a function to update that value
   // squares is the current state value of an array with 9 null elements, and setSquares is a function that can be used to update the state value of squares
   const [squares, setSquares] = useState(Array(9).fill(null));
+  //prevents changing of a square's state when clicked for the second time
   function handleClick(i) {
+    if (squares[i]) {
+      return;
+    }
     //creates a copy of the squares array instead of modifying the existing array (brings about immutability)
     const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+    // checks if the previous move is X and sets next to O
+    xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O");
+
     // updates the state value of each square when clicked
     setSquares(nextSquares);
+    //updates the player move to not X
+    setXIsNext(!xIsNext);
   }
   return (
     <>
