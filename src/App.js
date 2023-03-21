@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-// the board function is passed to the square component as a prop
 function Square({ value, onSquareClick }) {
   return (
-    // Square call the Board function when a square is clicked
     <button className="square" onClick={onSquareClick}>
       {value}
     </button>
@@ -11,21 +9,20 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() {
+  // squares variable is initialized with an array of 9 null values using the Array() constructor and the fill() method
+  // The useState hook returns an array with two elements: the current state value and a function to update that value
+  // squares is the current state value of an array with 9 null elements, and setSquares is a function that can be used to update the state value of squares
   const [squares, setSquares] = useState(Array(9).fill(null));
-  // defines the handleClick function passed from the Board component to the Square component
-  //takes in a square index
   function handleClick(i) {
-    //creates a copy of the squares array (nextSquares)
+    //creates a copy of the squares array instead of modifying the existing array (brings about immutability)
     const nextSquares = squares.slice();
-    //updates the nextSquares array to add X to any(i index) square
     nextSquares[i] = "X";
+    // updates the state value of each square when clicked
     setSquares(nextSquares);
   }
-
   return (
     <>
       <div className="board-row">
-        {/* connect the onSquareClick prop to a Board component function; handleClick */}
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
