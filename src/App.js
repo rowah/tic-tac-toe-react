@@ -14,9 +14,10 @@ export default function Board() {
   // squares is the current state value of an array with 9 null elements, and setSquares is a function that can be used to update the state value of squares
   const [squares, setSquares] = useState(Array(9).fill(null));
   function handleClick(i) {
-    //creates a copy of the squares array
+    //creates a copy of the squares array instead of modifying the existing array (brings about immutability)
     const nextSquares = squares.slice();
     nextSquares[i] = "X";
+    // updates the state value of each square when clicked
     setSquares(nextSquares);
   }
   return (
