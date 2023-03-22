@@ -17,7 +17,7 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   //prevents changing of a square's state when clicked for the second time
   function handleClick(i) {
-    if (squares[i]) {
+    if (squares[i] || determineWinner(squares)) {
       return;
     }
     //creates a copy of the squares array instead of modifying the existing array (brings about immutability)
@@ -30,8 +30,16 @@ export default function Board() {
     //updates the player move to not X
     setXIsNext(!xIsNext);
   }
+  const winner = determineWinner(squares);
+  let status;
+  if (winner) {
+    status = `${winner} wins!`;
+  } else {
+    status = "Next Player: " + (xIsNext ? "X" : "O");
+  }
   return (
     <>
+      <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -50,4 +58,27 @@ export default function Board() {
       </div>
     </>
   );
+
+  function determineWinner(squares) {
+    const winningConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [2, 4, 6],
+      [0, 4, 8],
+    ];
+    for (let i = 0; i < winningConditions.length; i++) {
+      const [a, b, c] = winningConditions[i];
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return squares[a];
+      }
+    }
+  }
 }
